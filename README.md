@@ -23,3 +23,5 @@ override.tf.json - одноименный файл - везде
 .terraformrc - одноименный файл - везде
 
 terraform.rc - одноименный файл - везде
+
+one more line
