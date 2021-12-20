@@ -63,5 +63,5 @@ git log -q --oneline -L:globalPluginDirs:plugins.go
 --------------------------------------------------------------
 #7
 
-Функция synchronizedWriters в проекте из репозитория https://github.com/hashicorp/terraform - отсутствует
-Нашел функцию synchronizedWriter в файле synchronized_writers.go одноименного проекта в репозитоиии https://github.com/koding/terraform
+Р¤СѓРЅРєС†РёСЏ synchronizedWriters РІ РїСЂРѕРµРєС‚Рµ РёР· СЂРµРїРѕР·РёС‚РѕСЂРёСЏ https://github.com/hashicorp/terraform - РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚
+РќР°С€РµР» С„СѓРЅРєС†РёСЋ synchronizedWriter РІ С„Р°Р№Р»Рµ synchronized_writers.go РѕРґРЅРѕРёРјРµРЅРЅРѕРіРѕ РїСЂРѕРµРєС‚Р° РІ СЂРµРїРѕР·РёС‚РѕРёРёРё https://github.com/koding/terraform
