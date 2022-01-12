@@ -1,67 +1,52 @@
-#1
-git show -s aefea
+5. Выделенные ресурсы по-умолчанию:
+   CPU: 2
+   RAM: 1Gb
+   Image volume size: 64Gb
 
-commit aefead2207ef7e2aa5dc81a34aedf0cad4c32545
-Author: Alisdair McDiarmid <alisdair@users.noreply.github.com>                                                                                                                                                                                  Date:   Thu Jun 18 10:29:58 2020 -0400
-Update CHANGELOG.md
---------------------------------------------------------------
+6. Как добавить оперативной памяти или ресурсов процессора виртуальной машине?
 
-#2
-git show -s 85024d3
+   Vagrant.configure("2") do |config|
+     config.vm.box = "bento/ubuntu-20.04"
 
-tag: v0.12.23
---------------------------------------------------------------
+     config.vm.provider "virtualbox" do |vb|
+       vb.cpus = 4
+       vb.memory = 2048
+     end
+   end
 
-#3
-git show --pretty=format:"%P" b8d720
+8. 
+  1) HISTFILESIZE - line 690
+  2) ignoreboth - объединяет действия ignorespace и ignoredups параметра HISTCONTROL, который управляет поведением сохранения команд в журнале истории
 
-56cd7859e05c36c06b56d013b55a252d0bb7e158 9ea88f22fc6269854151c571162c5bcf958bee2b
---------------------------------------------------------------
+9. В каких сценариях использования применимы скобки {}
+   1) Compound Commands { list; } - line 221
+   2) Shell Function Definitions - line 337
+   3) Brace Expansion - line 886
+   4) Подстановка переменных ${parameter} - line 948 
 
-#4
-git log  v0.12.23..v0.12.24 --oneline
+10.
+  1) touch {000001..100000}
+  2) Вышеуказанным способом 300000 файлов создать не получится, так как превышена допустимая длина аргументов 2097152 (getconf ARG_MAX)
 
-b14b74c49 [Website] vmc provider links
-3f235065b Update CHANGELOG.md
-6ae64e247 registry: Fix panic when server is unreachable
-5c619ca1b website: Remove links to the getting started guide's old location
-06275647e Update CHANGELOG.md
-d5f9411f5 command: Fix bug when using terraform login on Windows
-4b6d06cc5 Update CHANGELOG.md
-dd01a3507 Update CHANGELOG.md
---------------------------------------------------------------
-#5
+     for num in {000001..300000}; do touch ${num}; done
+     Медленно, неэффективно, но результат достигнут:)
 
-git grep "func providerSource("
+11. Что делает конструкция [[ -d /tmp ]]
+    Конструкция возвращает результат выражения (man line 230).
+    В нашем случае производится оценка наличия директории /tmp
 
-provider_source.go:func providerSource(configs []*cliconfig.ProviderInstallation, services *disco.Disco) (getproviders.Source, tfdiags.Diagnostics) {
+12. 
+    mkdir /tmp/new_path_directory -p
+    ln -s /bin/bash /tmp/new_path_directory/bash
+    sudo ln -s /bin/bash /usr/local/bin/bash
+    export PATH=/tmp/new_path_directory:$PATH
+    type -a bash
 
+    bash is /tmp/new_path_directory/bash
+    bash is /usr/local/bin/bash
+    bash is /usr/bin/bash
+    bash is /bin/bash
 
-git log -L:providerSource:provider_source.go
-
-commit 8c928e83589d90a031f811fae52a81be7153e82f
-+func providerSource(services *disco.Disco) getproviders.Source {
-
---------------------------------------------------------------
-#6
-
-git grep "globalPluginDirs("
-
-commands.go:            GlobalPluginDirs: globalPluginDirs(),
-commands.go:    helperPlugins := pluginDiscovery.FindPlugins("credentials", globalPluginDirs())
-plugins.go:func globalPluginDirs() []string {
-
-
-git log -q --oneline -L:globalPluginDirs:plugins.go
-
-78b122055 Remove config.go and update things using its aliases
-52dbf9483 keep .terraform.d/plugins for discovery
-41ab0aef7 Add missing OS_ARCH dir to global plugin paths
-66ebff90c move some more plugin search path logic to command
-8364383c3 Push plugin discovery down into command package
-
---------------------------------------------------------------
-#7
-
-Функция synchronizedWriters в проекте из репозитория https://github.com/hashicorp/terraform - отсутствует
-Нашел функцию synchronizedWriter в файле synchronized_writers.go одноименного проекта в репозитоиии https://github.com/koding/terraform
+13. Чем отличается планирование команд с помощью batch и at
+    batch - планирует выполнение команды, которая будет запущена основываясь на загрузке системы
+    at    - соответственно, в указанный период
