@@ -4,6 +4,10 @@
 ```bash
 sudo useradd -rs /bin/false node_exporter
 ```
+* Создадим файл для указания параметров запуска сервиса **/etc/default/node_exporter** со следующим содержимым
+```editorconfig
+OPTIONS="--collector.mountstats --collector.interrupts"
+```
 * В файл параметров сервиса **/etc/systemd/system/node_exporter.service** помещаем слудующее
 ```editorconfig
 [Unit]
@@ -14,7 +18,8 @@ After=network.target
 User=node_exporter
 Group=node_exporter
 Type=simple
-ExecStart=/usr/local/bin/node_exporter
+EnvironmentFile=/etc/default/node_exporter
+ExecStart=/usr/local/bin/node_exporter $OPTIONS
 Restart=on-failure
 
 [Install]
