@@ -7,6 +7,7 @@
 > Соответственно, для достижения цели нам необходимо скопировать соответствующий 
 > файл в вышеуказанную директорию (можно было примонтировать volume, но не будем 
 > усложнять, так как страница статичная и задание простое)  
+> - Source project [link](https://github.com/Stanislav-Zakharov/devops-netology/tree/main/5.3/01)
 > - Docker-image link [svzaharov/static-http-server:1.0.0](https://hub.docker.com/layers/240777542/svzaharov/static-http-server/1.0.0/images/sha256-79391402591e6d058f838f5737ef068a95b7cc3e9ffd4ec594675626e7414951?context=repo) 
 
 ```bash
