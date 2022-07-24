@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  posgtres:
+    image: postgres:12
+    container_name: pg2
+    restart: unless-stopped
+    ports:
+      - 5442:5432
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'posgtres'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - /var/local/data/postgresql/backup:/var/lib/postgresql/backup
+
+volumes:
+  postgres_data:
+    driver: local
