@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  postgresql:
+    container_name: pg
+    image: postgres:13
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+      - ./backup:/var/lib/postgresql/backup
+
+volumes:
+  pg-data:
+    driver: local
+
