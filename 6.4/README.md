@@ -140,4 +140,4 @@
     ~/devops/netology/6.4 $ docker exec -it pg bash -c 'pg_dump -U postgres -d test_database > /var/lib/postgresql/backup/dump2.sql';
     ```
 * Как бы вы доработали бэкап-файл, чтобы добавить уникальность значения столбца title для таблиц test_database?
-    > [dump2_modified.sql](./backup/dump2_modified.sql)
+    > [dump2_modified.sql (rows:164 - 174)](./backup/dump2_modified.sql)
