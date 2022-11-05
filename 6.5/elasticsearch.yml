@@ -1,0 +1,9 @@
+node.name: netology_test
+path.data: /var/lib/elasticsearch/data
+path.logs: /var/lib/elasticsearch/logs
+path.repo: /elasticsearch/snapshots
+http.host: 0.0.0.0
+http.port: 9200
+xpack.license.self_generated.type: basic
+discovery.type: single-node
+xpack.security.enabled: false
