@@ -1,0 +1,4 @@
+---
+nginx_user_name: nobody
+lighthouse_vcs: https://github.com/VKCOM/lighthouse.git
+lighthouse_location_dir: /var/lib/lighthouse
