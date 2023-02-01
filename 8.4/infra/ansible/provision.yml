@@ -1,0 +1,18 @@
+---
+  - hosts: nodes
+    become: yes
+    become_user: root
+    remote_user: vagrant
+
+    tasks:
+      - name: Create directory for ssh-keys
+        ansible.builtin.file: state=directory mode=0700 dest=/root/.ssh/
+
+      - name: Adding rsa-key in /root/.ssh/authorized_keys
+        ansible.builtin.copy: src=~/.ssh/id_rsa.pub dest=/root/.ssh/authorized_keys owner=root mode=0600
+        ignore_errors: yes
+
+      - name: Install EPEL repository
+        ansible.builtin.yum:
+          name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+          state: present

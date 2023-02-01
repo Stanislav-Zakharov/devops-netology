@@ -2,3 +2,4 @@
 .vscode
 **/key.json
 5.4/src
+.vagrant
